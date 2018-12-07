@@ -188,6 +188,7 @@
             this.dtwainImagelist.AnnotationPen = null;
             this.dtwainImagelist.AnnotationTextColor = System.Drawing.Color.Black;
             this.dtwainImagelist.AnnotationTextFont = null;
+            this.dtwainImagelist.AutoScroll = true;
             this.dtwainImagelist.IfShowCancelDialogWhenImageTransfer = false;
             this.dtwainImagelist.IfThrowException = false;
             this.dtwainImagelist.Location = new System.Drawing.Point(3, 65);
