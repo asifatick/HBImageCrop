@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clbImageList = new System.Windows.Forms.CheckedListBox();
             this.btnOpenImageFolder = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dtMain = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
             this.nudHeight = new System.Windows.Forms.NumericUpDown();
             this.nudWidth = new System.Windows.Forms.NumericUpDown();
             this.rbResize = new System.Windows.Forms.RadioButton();
@@ -40,21 +37,12 @@
             this.rbCrop = new System.Windows.Forms.RadioButton();
             this.dtwainImagelist = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.clbImageList = new System.Windows.Forms.CheckedListBox();
+            this.dtMain = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // clbImageList
-            // 
-            this.clbImageList.FormattingEnabled = true;
-            this.clbImageList.Location = new System.Drawing.Point(747, 15);
-            this.clbImageList.Name = "clbImageList";
-            this.clbImageList.Size = new System.Drawing.Size(205, 174);
-            this.clbImageList.TabIndex = 8;
-            this.clbImageList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbImageList_ItemCheck);
-            this.clbImageList.SelectedIndexChanged += new System.EventHandler(this.clbImageList_SelectedIndexChanged);
             // 
             // btnOpenImageFolder
             // 
@@ -65,45 +53,6 @@
             this.btnOpenImageFolder.Text = "Open Folder";
             this.btnOpenImageFolder.UseVisualStyleBackColor = true;
             this.btnOpenImageFolder.Click += new System.EventHandler(this.btnOpenImageFolder_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.dtMain);
-            this.panel1.Controls.Add(this.clbImageList);
-            this.panel1.Location = new System.Drawing.Point(220, 65);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1190, 694);
-            this.panel1.TabIndex = 10;
-            // 
-            // dtMain
-            // 
-            this.dtMain.AnnotationFillColor = System.Drawing.Color.White;
-            this.dtMain.AnnotationPen = null;
-            this.dtMain.AnnotationTextColor = System.Drawing.Color.Black;
-            this.dtMain.AnnotationTextFont = null;
-            this.dtMain.AutoScroll = true;
-            this.dtMain.AutoSize = true;
-            this.dtMain.IfShowCancelDialogWhenImageTransfer = false;
-            this.dtMain.IfThrowException = false;
-            this.dtMain.Location = new System.Drawing.Point(3, 3);
-            this.dtMain.LogLevel = ((short)(0));
-            this.dtMain.Name = "dtMain";
-            this.dtMain.PDFConvertMode = Dynamsoft.DotNet.TWAIN.Enums.EnumPDFConvertMode.enumCM_DEFAULT;
-            this.dtMain.PDFMarginBottom = ((uint)(0u));
-            this.dtMain.PDFMarginLeft = ((uint)(0u));
-            this.dtMain.PDFMarginRight = ((uint)(0u));
-            this.dtMain.PDFMarginTop = ((uint)(0u));
-            this.dtMain.PDFXConformance = ((uint)(0u));
-            this.dtMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtMain.Size = new System.Drawing.Size(1184, 688);
-            this.dtMain.TabIndex = 10;
-            this.dtMain.OnDNTKeyDown += new Dynamsoft.DotNet.TWAIN.Delegate.OnDNTKeyDownHandler(this.dtMain_OnDNTKeyDown);
-            this.dtMain.OnImageAreaSelected += new Dynamsoft.DotNet.TWAIN.Delegate.OnImageAreaSelectedHandler(this.dtMain_OnImageAreaSelected);
-            this.dtMain.OnMouseClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseClickHandler(this.dtMain_OnMouseClick);
-            this.dtMain.OnMouseRightClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseRightClickHandler(this.dtMain_OnMouseRightClick);
-            this.dtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtMain_KeyUp);
             // 
             // nudHeight
             // 
@@ -191,7 +140,7 @@
             this.dtwainImagelist.AutoScroll = true;
             this.dtwainImagelist.IfShowCancelDialogWhenImageTransfer = false;
             this.dtwainImagelist.IfThrowException = false;
-            this.dtwainImagelist.Location = new System.Drawing.Point(3, 65);
+            this.dtwainImagelist.Location = new System.Drawing.Point(12, 811);
             this.dtwainImagelist.LogLevel = ((short)(0));
             this.dtwainImagelist.Name = "dtwainImagelist";
             this.dtwainImagelist.PDFConvertMode = Dynamsoft.DotNet.TWAIN.Enums.EnumPDFConvertMode.enumCM_DEFAULT;
@@ -201,7 +150,7 @@
             this.dtwainImagelist.PDFMarginTop = ((uint)(0u));
             this.dtwainImagelist.PDFXConformance = ((uint)(0u));
             this.dtwainImagelist.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtwainImagelist.Size = new System.Drawing.Size(200, 694);
+            this.dtwainImagelist.Size = new System.Drawing.Size(262, 166);
             this.dtwainImagelist.TabIndex = 10;
             this.dtwainImagelist.OnMouseClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseClickHandler(this.dtwainImagelist_OnMouseClick);
             // 
@@ -217,24 +166,62 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1416, 59);
+            this.panel2.Size = new System.Drawing.Size(1902, 59);
             this.panel2.TabIndex = 17;
+            // 
+            // clbImageList
+            // 
+            this.clbImageList.FormattingEnabled = true;
+            this.clbImageList.HorizontalScrollbar = true;
+            this.clbImageList.Location = new System.Drawing.Point(12, 77);
+            this.clbImageList.Name = "clbImageList";
+            this.clbImageList.Size = new System.Drawing.Size(262, 701);
+            this.clbImageList.TabIndex = 8;
+            this.clbImageList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbImageList_ItemCheck);
+            this.clbImageList.SelectedIndexChanged += new System.EventHandler(this.clbImageList_SelectedIndexChanged);
+            // 
+            // dtMain
+            // 
+            this.dtMain.AnnotationFillColor = System.Drawing.Color.White;
+            this.dtMain.AnnotationPen = null;
+            this.dtMain.AnnotationTextColor = System.Drawing.Color.Black;
+            this.dtMain.AnnotationTextFont = null;
+            this.dtMain.AutoScroll = true;
+            this.dtMain.AutoSize = true;
+            this.dtMain.IfShowCancelDialogWhenImageTransfer = false;
+            this.dtMain.IfThrowException = false;
+            this.dtMain.Location = new System.Drawing.Point(280, 77);
+            this.dtMain.LogLevel = ((short)(0));
+            this.dtMain.Name = "dtMain";
+            this.dtMain.PDFConvertMode = Dynamsoft.DotNet.TWAIN.Enums.EnumPDFConvertMode.enumCM_DEFAULT;
+            this.dtMain.PDFMarginBottom = ((uint)(0u));
+            this.dtMain.PDFMarginLeft = ((uint)(0u));
+            this.dtMain.PDFMarginRight = ((uint)(0u));
+            this.dtMain.PDFMarginTop = ((uint)(0u));
+            this.dtMain.PDFXConformance = ((uint)(0u));
+            this.dtMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtMain.Size = new System.Drawing.Size(1651, 900);
+            this.dtMain.TabIndex = 10;
+            this.dtMain.OnDNTKeyDown += new Dynamsoft.DotNet.TWAIN.Delegate.OnDNTKeyDownHandler(this.dtMain_OnDNTKeyDown);
+            this.dtMain.OnImageAreaSelected += new Dynamsoft.DotNet.TWAIN.Delegate.OnImageAreaSelectedHandler(this.dtMain_OnImageAreaSelected);
+            this.dtMain.OnMouseClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseClickHandler(this.dtMain_OnMouseClick);
+            this.dtMain.OnMouseRightClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseRightClickHandler(this.dtMain_OnMouseRightClick);
+            this.dtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtMain_KeyUp);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1416, 813);
+            this.ClientSize = new System.Drawing.Size(1902, 1011);
+            this.Controls.Add(this.dtMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtwainImagelist);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.clbImageList);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Cropper";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -245,10 +232,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox clbImageList;
         private System.Windows.Forms.Button btnOpenImageFolder;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown nudHeight;
         private System.Windows.Forms.NumericUpDown nudWidth;
         private System.Windows.Forms.RadioButton rbResize;
@@ -256,8 +240,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rbCrop;
         private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtwainImagelist;
-        private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtMain;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckedListBox clbImageList;
+        private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtMain;
     }
 }
 
