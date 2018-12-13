@@ -35,6 +35,7 @@ namespace HBImageCrop
         {
             dtwainImagelist.SetViewMode(1, 8);
             dtwainImagelist.LicenseKeys = "F4E6B87C454944CB24705D558C4C9E4C;C9164EBE9DC183CAC2CE69621C0AE76B;266653AFD4CF1476C43DCC99919C76AE";
+            dtwainImagelist.MaxImagesInBuffer = 1500;
             dtMain.LicenseKeys = "F4E6B87C454944CB24705D558C4C9E4C;C9164EBE9DC183CAC2CE69621C0AE76B;266653AFD4CF1476C43DCC99919C76AE";
             dtMain.MaxImagesInBuffer = 1;
             aspectRatio = (double)(nudWidth.Value / nudHeight.Value);
@@ -64,10 +65,10 @@ namespace HBImageCrop
             List<string> files = Directory.EnumerateFiles(SourcePath).Where(s => s.EndsWith(".jpg") || s.EndsWith(".jpeg") || s.EndsWith(".png")).ToList();
             //
             clbImageList.Items.Clear();
-            dtwainImagelist.RemoveAllImages();
+            //dtwainImagelist.RemoveAllImages();
             foreach (var item in files)
             {
-                dtwainImagelist.LoadImage(item);
+               // dtwainImagelist.LoadImage(item);
                 clbImageList.Items.Add(item);
 
             }
@@ -76,55 +77,15 @@ namespace HBImageCrop
             if (clbImageList.Items.Count > 0)
             {
                 clbImageList.SetItemCheckState(0, CheckState.Checked);
-                dtwainImagelist.CurrentImageIndexInBuffer = 0;
-                dtwainImagelist_OnMouseClick(0);
+                //dtwainImagelist.CurrentImageIndexInBuffer = 0;
+               // dtwainImagelist_OnMouseClick(0);
             }
             Directory.CreateDirectory(_currentProject.LastActiveSourceFolder + CroppedPath);
             Directory.CreateDirectory(_currentProject.LastActiveSourceFolder + ResizePath);
+            lblTotal.Text = clbImageList.Items.Count.ToString() + " : Images Loaded.";
         }
 
-        private void clbImageList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelctionChanges(clbImageList.SelectedIndex);
-        }
-        private void SelctionChanges(int selectionIndex)
-        {
-            string selectedimagepath = clbImageList.GetItemText(clbImageList.Items[selectionIndex]);
-            currentIndex = selectionIndex;
-            try
-            {
-               // pictureBox1.Load(selectedimagepath);
-                ActiveViewableImage = Image.FromFile(selectedimagepath);
-
-
-                ActiveImage = new Img();
-                ActiveImage.Id = Guid.NewGuid().ToString();
-                ActiveImage.OriginalName = selectedimagepath;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("No Image Selected");
-            }
-
-            try
-            {
-
-              
-                if (_currentProject.Images.Any(i => i.OriginalName == selectedimagepath))
-                {
-                    ActiveImage = _currentProject.Images.Single(i => i.OriginalName == selectedimagepath);
-                    List<ImgLabel> labels = ActiveImage.AnnotatedLabels;
-                   
-
-                }
-
-            }
-            catch (Exception ex1)
-            {
-
-                Console.WriteLine("No Image Data");
-            }
-        }
+       
 
         private void clbImageList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -169,7 +130,54 @@ namespace HBImageCrop
             if (drawing) e.Graphics.DrawRectangle(Pens.Red, new Rectangle { Location= currentPos,Height =(int)nudHeight.Value, Width= (int)nudWidth.Value} );
         }
 
-    
+        private void clbImageList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelctionChanges(clbImageList.SelectedIndex);
+        }
+        private void SelctionChanges(int selectionIndex)
+        {
+            selectionCount = 0;
+            string selectedimagepath = clbImageList.GetItemText(clbImageList.Items[selectionIndex]);
+            currentIndex = selectionIndex;
+            try
+            {
+                // pictureBox1.Load(selectedimagepath);
+                ActiveViewableImage = Image.FromFile(selectedimagepath);
+                dtMain.LoadImage(ActiveViewableImage);
+                //dtwainImagelist_OnMouseClick((short)clbImageList.SelectedIndex);
+              
+
+                ActiveImage = new Img();
+                ActiveImage.Id = Guid.NewGuid().ToString();
+                ActiveImage.OriginalName = selectedimagepath;
+                rbCrop_CheckedChanged(null, null);
+                tbRotate.Value = 0;
+                nmudRotate.Value = 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No Image Selected");
+            }
+
+            //try
+            //{
+
+
+            //    if (_currentProject.Images.Any(i => i.OriginalName == selectedimagepath))
+            //    {
+            //        ActiveImage = _currentProject.Images.Single(i => i.OriginalName == selectedimagepath);
+            //        List<ImgLabel> labels = ActiveImage.AnnotatedLabels;
+
+
+            //    }
+
+            //}
+            //catch (Exception ex1)
+            //{
+
+            //    Console.WriteLine("No Image Data");
+            //}
+        }
 
         private void dtwainImagelist_OnMouseClick(short sImageIndex)
         {
@@ -211,7 +219,7 @@ namespace HBImageCrop
             {
                 dtMain.Crop(0, selection.Left, selection.Top, selection.Right, selection.Bottom);
                 dtMain.SaveAsJPEG(_currentProject.LastActiveSourceFolder + CroppedPath + fileName, 0);
-                dtMain.LoadDibFromClipboard();
+                dtMain.LoadImage(ActiveViewableImage);
                 dtMain.SetSelectionRectPosition(0, 0, 0, (int)nudWidth.Value, (int)nudHeight.Value);
 
             }
@@ -226,7 +234,7 @@ namespace HBImageCrop
 
 
 
-                dtMain.LoadDibFromClipboard();
+                dtMain.LoadImage(ActiveViewableImage);
             }
             selectionCount++;
         }
@@ -264,14 +272,76 @@ namespace HBImageCrop
         {
             if (e.KeyCode == Keys.Space)
             {
-                int index = dtwainImagelist.CurrentImageIndexInBuffer + 1;
-                if (index < dtwainImagelist.HowManyImagesInBuffer)
+                int index = clbImageList.SelectedIndex + 1;
+                if (index < clbImageList.Items.Count)
                 {
-                    dtwainImagelist.CurrentImageIndexInBuffer = (short)index;
-                    dtwainImagelist_OnMouseClick((short)index);
+                    clbImageList.SelectedIndex = index;
+                   // dtwainImagelist_OnMouseClick((short)index);
                 }
+                //int index = dtwainImagelist.CurrentImageIndexInBuffer + 1;
+                //if (index < dtwainImagelist.HowManyImagesInBuffer)
+                //{
+                //    dtwainImagelist.CurrentImageIndexInBuffer = (short)index;
+                //    dtwainImagelist_OnMouseClick((short)index);
+                //}
 
             }
+        }
+
+        private void tbRotate_Scroll(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbRotate_ValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        
+
+        private void tbRotate_Scroll_1(object sender, EventArgs e)
+        {
+            //dtMain.Visible = false;
+            //dtMain.LoadImage(ActiveViewableImage);
+            
+            //dtMain.Rotate(0, tbRotate.Value, true, Dynamsoft.DotNet.TWAIN.Enums.DWTInterpolationMethod.BestQuality);
+            //dtMain.Visible = true;
+
+        }
+
+        private void tbRotate_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            RotateImage();
+        }
+
+        private void RotateImage()
+        {
+            Rectangle selectedArea = new Rectangle(0, 0, (int)nudWidth.Value + 1, (int)nudHeight.Value + 1);
+            if (rbCrop.Checked)
+            {
+                selectedArea = dtMain.GetSelectionRect(0);
+
+            }
+
+            dtMain.Visible = false;
+            dtMain.LoadImage(ActiveViewableImage);
+
+            dtMain.Rotate(0, tbRotate.Value, true, Dynamsoft.DotNet.TWAIN.Enums.DWTInterpolationMethod.BestQuality);
+            nmudRotate.Value = tbRotate.Value;
+            dtMain.Visible = true;
+            if (rbCrop.Checked)
+            {
+
+                dtMain.SetSelectionRectPosition(0, selectedArea.Left, selectedArea.Top, selectedArea.Right, selectedArea.Bottom);
+
+            }
+        }
+
+        private void nmudRotate_ValueChanged(object sender, EventArgs e)
+        {
+            tbRotate.Value = (int)nmudRotate.Value;
+            RotateImage();
         }
     }
 }

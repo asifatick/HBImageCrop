@@ -37,11 +37,17 @@
             this.rbCrop = new System.Windows.Forms.RadioButton();
             this.dtwainImagelist = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbRotate = new System.Windows.Forms.TrackBar();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.clbImageList = new System.Windows.Forms.CheckedListBox();
             this.dtMain = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
+            this.nmudRotate = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRotate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmudRotate)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenImageFolder
@@ -156,6 +162,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.nmudRotate);
+            this.panel2.Controls.Add(this.tbRotate);
+            this.panel2.Controls.Add(this.lblTotal);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnOpenImageFolder);
             this.panel2.Controls.Add(this.rbCrop);
@@ -166,8 +176,30 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1902, 59);
+            this.panel2.Size = new System.Drawing.Size(1604, 59);
             this.panel2.TabIndex = 17;
+            // 
+            // tbRotate
+            // 
+            this.tbRotate.Location = new System.Drawing.Point(897, 4);
+            this.tbRotate.Maximum = 180;
+            this.tbRotate.Minimum = -180;
+            this.tbRotate.Name = "tbRotate";
+            this.tbRotate.Size = new System.Drawing.Size(257, 56);
+            this.tbRotate.TabIndex = 18;
+            this.tbRotate.TickFrequency = 10;
+            this.tbRotate.Scroll += new System.EventHandler(this.tbRotate_Scroll_1);
+            this.tbRotate.ValueChanged += new System.EventHandler(this.tbRotate_ValueChanged);
+            this.tbRotate.MouseCaptureChanged += new System.EventHandler(this.tbRotate_MouseCaptureChanged);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(135, 4);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(46, 17);
+            this.lblTotal.TabIndex = 17;
+            this.lblTotal.Text = "label3";
             // 
             // clbImageList
             // 
@@ -208,11 +240,43 @@
             this.dtMain.OnMouseRightClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseRightClickHandler(this.dtMain_OnMouseRightClick);
             this.dtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtMain_KeyUp);
             // 
+            // nmudRotate
+            // 
+            this.nmudRotate.Location = new System.Drawing.Point(1160, 10);
+            this.nmudRotate.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.nmudRotate.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.nmudRotate.Name = "nmudRotate";
+            this.nmudRotate.Size = new System.Drawing.Size(60, 22);
+            this.nmudRotate.TabIndex = 19;
+            this.nmudRotate.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.nmudRotate.ValueChanged += new System.EventHandler(this.nmudRotate_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1226, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 17);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Rotate Angle";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1011);
+            this.ClientSize = new System.Drawing.Size(1604, 875);
             this.Controls.Add(this.dtMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtwainImagelist);
@@ -226,6 +290,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRotate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmudRotate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,6 +309,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckedListBox clbImageList;
         private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtMain;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.TrackBar tbRotate;
+        private System.Windows.Forms.NumericUpDown nmudRotate;
+        private System.Windows.Forms.Label label3;
     }
 }
 
