@@ -35,19 +35,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rbCrop = new System.Windows.Forms.RadioButton();
-            this.dtwainImagelist = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nmudRotate = new System.Windows.Forms.NumericUpDown();
             this.tbRotate = new System.Windows.Forms.TrackBar();
             this.lblTotal = new System.Windows.Forms.Label();
             this.clbImageList = new System.Windows.Forms.CheckedListBox();
             this.dtMain = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
-            this.nmudRotate = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
+            this.dtwainImagelist = new Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmudRotate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRotate)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenImageFolder
@@ -99,7 +99,7 @@
             // rbResize
             // 
             this.rbResize.AutoSize = true;
-            this.rbResize.Location = new System.Drawing.Point(723, 21);
+            this.rbResize.Location = new System.Drawing.Point(321, 24);
             this.rbResize.Name = "rbResize";
             this.rbResize.Size = new System.Drawing.Size(72, 21);
             this.rbResize.TabIndex = 13;
@@ -128,7 +128,7 @@
             // 
             this.rbCrop.AutoSize = true;
             this.rbCrop.Checked = true;
-            this.rbCrop.Location = new System.Drawing.Point(655, 21);
+            this.rbCrop.Location = new System.Drawing.Point(253, 24);
             this.rbCrop.Name = "rbCrop";
             this.rbCrop.Size = new System.Drawing.Size(59, 21);
             this.rbCrop.TabIndex = 16;
@@ -136,29 +136,6 @@
             this.rbCrop.Text = "Crop";
             this.rbCrop.UseVisualStyleBackColor = true;
             this.rbCrop.CheckedChanged += new System.EventHandler(this.rbCrop_CheckedChanged);
-            // 
-            // dtwainImagelist
-            // 
-            this.dtwainImagelist.AnnotationFillColor = System.Drawing.Color.White;
-            this.dtwainImagelist.AnnotationPen = null;
-            this.dtwainImagelist.AnnotationTextColor = System.Drawing.Color.Black;
-            this.dtwainImagelist.AnnotationTextFont = null;
-            this.dtwainImagelist.AutoScroll = true;
-            this.dtwainImagelist.IfShowCancelDialogWhenImageTransfer = false;
-            this.dtwainImagelist.IfThrowException = false;
-            this.dtwainImagelist.Location = new System.Drawing.Point(12, 811);
-            this.dtwainImagelist.LogLevel = ((short)(0));
-            this.dtwainImagelist.Name = "dtwainImagelist";
-            this.dtwainImagelist.PDFConvertMode = Dynamsoft.DotNet.TWAIN.Enums.EnumPDFConvertMode.enumCM_DEFAULT;
-            this.dtwainImagelist.PDFMarginBottom = ((uint)(0u));
-            this.dtwainImagelist.PDFMarginLeft = ((uint)(0u));
-            this.dtwainImagelist.PDFMarginRight = ((uint)(0u));
-            this.dtwainImagelist.PDFMarginTop = ((uint)(0u));
-            this.dtwainImagelist.PDFXConformance = ((uint)(0u));
-            this.dtwainImagelist.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtwainImagelist.Size = new System.Drawing.Size(262, 166);
-            this.dtwainImagelist.TabIndex = 10;
-            this.dtwainImagelist.OnMouseClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseClickHandler(this.dtwainImagelist_OnMouseClick);
             // 
             // panel2
             // 
@@ -176,12 +153,44 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1604, 59);
+            this.panel2.Size = new System.Drawing.Size(1006, 59);
             this.panel2.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(824, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 17);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Rotate Angle";
+            // 
+            // nmudRotate
+            // 
+            this.nmudRotate.Location = new System.Drawing.Point(758, 13);
+            this.nmudRotate.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.nmudRotate.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.nmudRotate.Name = "nmudRotate";
+            this.nmudRotate.Size = new System.Drawing.Size(60, 22);
+            this.nmudRotate.TabIndex = 19;
+            this.nmudRotate.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.nmudRotate.ValueChanged += new System.EventHandler(this.nmudRotate_ValueChanged);
             // 
             // tbRotate
             // 
-            this.tbRotate.Location = new System.Drawing.Point(897, 4);
+            this.tbRotate.Location = new System.Drawing.Point(495, 7);
             this.tbRotate.Maximum = 180;
             this.tbRotate.Minimum = -180;
             this.tbRotate.Name = "tbRotate";
@@ -205,9 +214,9 @@
             // 
             this.clbImageList.FormattingEnabled = true;
             this.clbImageList.HorizontalScrollbar = true;
-            this.clbImageList.Location = new System.Drawing.Point(12, 77);
+            this.clbImageList.Location = new System.Drawing.Point(0, 60);
             this.clbImageList.Name = "clbImageList";
-            this.clbImageList.Size = new System.Drawing.Size(262, 701);
+            this.clbImageList.Size = new System.Drawing.Size(164, 650);
             this.clbImageList.TabIndex = 8;
             this.clbImageList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbImageList_ItemCheck);
             this.clbImageList.SelectedIndexChanged += new System.EventHandler(this.clbImageList_SelectedIndexChanged);
@@ -222,7 +231,7 @@
             this.dtMain.AutoSize = true;
             this.dtMain.IfShowCancelDialogWhenImageTransfer = false;
             this.dtMain.IfThrowException = false;
-            this.dtMain.Location = new System.Drawing.Point(280, 77);
+            this.dtMain.Location = new System.Drawing.Point(170, 60);
             this.dtMain.LogLevel = ((short)(0));
             this.dtMain.Name = "dtMain";
             this.dtMain.PDFConvertMode = Dynamsoft.DotNet.TWAIN.Enums.EnumPDFConvertMode.enumCM_DEFAULT;
@@ -232,7 +241,7 @@
             this.dtMain.PDFMarginTop = ((uint)(0u));
             this.dtMain.PDFXConformance = ((uint)(0u));
             this.dtMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtMain.Size = new System.Drawing.Size(1651, 900);
+            this.dtMain.Size = new System.Drawing.Size(824, 649);
             this.dtMain.TabIndex = 10;
             this.dtMain.OnDNTKeyDown += new Dynamsoft.DotNet.TWAIN.Delegate.OnDNTKeyDownHandler(this.dtMain_OnDNTKeyDown);
             this.dtMain.OnImageAreaSelected += new Dynamsoft.DotNet.TWAIN.Delegate.OnImageAreaSelectedHandler(this.dtMain_OnImageAreaSelected);
@@ -240,43 +249,35 @@
             this.dtMain.OnMouseRightClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseRightClickHandler(this.dtMain_OnMouseRightClick);
             this.dtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtMain_KeyUp);
             // 
-            // nmudRotate
+            // dtwainImagelist
             // 
-            this.nmudRotate.Location = new System.Drawing.Point(1160, 10);
-            this.nmudRotate.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.nmudRotate.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            -2147483648});
-            this.nmudRotate.Name = "nmudRotate";
-            this.nmudRotate.Size = new System.Drawing.Size(60, 22);
-            this.nmudRotate.TabIndex = 19;
-            this.nmudRotate.Value = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.nmudRotate.ValueChanged += new System.EventHandler(this.nmudRotate_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1226, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 17);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Rotate Angle";
+            this.dtwainImagelist.AnnotationFillColor = System.Drawing.Color.White;
+            this.dtwainImagelist.AnnotationPen = null;
+            this.dtwainImagelist.AnnotationTextColor = System.Drawing.Color.Black;
+            this.dtwainImagelist.AnnotationTextFont = null;
+            this.dtwainImagelist.AutoScroll = true;
+            this.dtwainImagelist.IfShowCancelDialogWhenImageTransfer = false;
+            this.dtwainImagelist.IfThrowException = false;
+            this.dtwainImagelist.Location = new System.Drawing.Point(334, 450);
+            this.dtwainImagelist.LogLevel = ((short)(0));
+            this.dtwainImagelist.Name = "dtwainImagelist";
+            this.dtwainImagelist.PDFConvertMode = Dynamsoft.DotNet.TWAIN.Enums.EnumPDFConvertMode.enumCM_DEFAULT;
+            this.dtwainImagelist.PDFMarginBottom = ((uint)(0u));
+            this.dtwainImagelist.PDFMarginLeft = ((uint)(0u));
+            this.dtwainImagelist.PDFMarginRight = ((uint)(0u));
+            this.dtwainImagelist.PDFMarginTop = ((uint)(0u));
+            this.dtwainImagelist.PDFXConformance = ((uint)(0u));
+            this.dtwainImagelist.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtwainImagelist.Size = new System.Drawing.Size(262, 166);
+            this.dtwainImagelist.TabIndex = 10;
+            this.dtwainImagelist.OnMouseClick += new Dynamsoft.DotNet.TWAIN.Delegate.OnMouseClickHandler(this.dtwainImagelist_OnMouseClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1604, 875);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.dtMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtwainImagelist);
@@ -290,8 +291,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbRotate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmudRotate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRotate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,7 +306,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rbCrop;
-        private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtwainImagelist;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckedListBox clbImageList;
         private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtMain;
@@ -313,6 +313,7 @@
         private System.Windows.Forms.TrackBar tbRotate;
         private System.Windows.Forms.NumericUpDown nmudRotate;
         private System.Windows.Forms.Label label3;
+        private Dynamsoft.DotNet.TWAIN.DynamicDotNetTwain dtwainImagelist;
     }
 }
 
