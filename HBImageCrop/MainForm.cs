@@ -61,8 +61,8 @@ namespace HBImageCrop
         {
             SourcePath = Path;
           
-
-            List<string> files = Directory.EnumerateFiles(SourcePath).Where(s => s.EndsWith(".jpg") || s.EndsWith(".jpeg") || s.EndsWith(".png")).ToList();
+            //image format
+            List<string> files = Directory.EnumerateFiles(SourcePath).Where(s => s.EndsWith(".jpg") || s.EndsWith(".jpeg") || s.EndsWith(".png") || s.EndsWith(".JPG")).ToList();
             //
             clbImageList.Items.Clear();
             //dtwainImagelist.RemoveAllImages();
